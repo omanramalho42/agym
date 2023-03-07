@@ -65,6 +65,7 @@ const register = () => {
               Create and account
           </h1>
           <form className="space-y-4 md:space-y-6" onSubmit={handleSubmit(submitHandler)}>
+            {/* NAME */}
             <div>
               <label 
                 htmlFor="name" 
@@ -89,6 +90,7 @@ const register = () => {
                 <div className="text-red-500">{errors.name.message}</div>
               )}
             </div>
+            {/* EMAIL */}
             <div>
               <label 
                 htmlFor="email" 
@@ -116,6 +118,7 @@ const register = () => {
                 <div className="text-red-500">{errors.email.message}</div>
               )}
             </div>
+            {/* PASSWORD */}
             <div>
               <label 
                 htmlFor="password" 
@@ -140,6 +143,7 @@ const register = () => {
                 <div className="text-red-500">{errors.password.message}</div>
               )}
             </div>
+            {/* CONFIRM PASSWORD */}
             <div>
               <label 
                 htmlFor="confirmPassword" 
@@ -177,6 +181,34 @@ const register = () => {
                 )
               }
             </div>
+
+            <div>
+              <label 
+                htmlFor="age" 
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >
+                Your Age
+              </label>
+              <input 
+                type="text" 
+                name="age" 
+                id="age" 
+                className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="21" 
+                required
+                {...register('age', {
+                  required: 'Please enter your age',
+                  valueAsNumber: true
+                })}
+              />
+              {errors.age && (
+                //@ts-ignore
+                <div className="text-red-500">{errors.age.message}</div>
+              )}
+            </div>
+
+
+            {/* TERMS */}
             <div className="flex items-start">
               <div className="flex items-center h-5">
                 <input 

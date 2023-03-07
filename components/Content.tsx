@@ -22,14 +22,6 @@ const Content:React.FC<ContentProps> = ({ search }) => {
     useSelector(useCategories);
 
   useEffect(() => {
-    if(stateVideos && stateCategories) {
-      console.log({ 
-        stateCategories 
-      }, { 
-        stateVideos 
-      },'redux');
-    }
-
     setMyVideos(
       stateVideos?.map((i) => i)
     );

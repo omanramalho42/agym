@@ -1,22 +1,19 @@
-import { useContext, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { GetServerSideProps, GetStaticProps } from 'next'
 
-import Link from 'next/link'
-import Image from 'next/image'
-
-import { signOut, useSession } from 'next-auth/react'
+import { useSession } from 'next-auth/react'
 
 import { Header, Layout, Main } from '../components'
 import { getCategories } from '../lib/categories'
 
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 
 import { getAllVideos } from '../lib/videos'
 
-import { setCategories, useCategories } from '../redux/slicer/CategoriesSlicer'
+import { setCategories } from '../redux/slicer/CategoriesSlicer'
 
-import { setVideos, useVideos } from '../redux/slicer/VideosSlicer'
+import { setVideos } from '../redux/slicer/VideosSlicer'
 
 import { useRouter } from 'next/router'
 

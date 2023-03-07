@@ -1,4 +1,4 @@
-import React, { Fragment, useContext, useEffect, useState } from 'react'
+import React, { Fragment, useState } from 'react'
 
 import logo from '../public/images/logo.png'
 
@@ -19,7 +19,11 @@ import Switcher from './Switcher'
 import { motion } from 'framer-motion'
 import Moment from 'react-moment'
 
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/router'
+
+import { useSession, signOut } from 'next-auth/react'
+
+import { LogoutOutline } from 'heroicons-react'
 
 interface HeaderProps {
   setShow: (value: any) => any;
@@ -31,7 +35,12 @@ const Header: React.FC<HeaderProps> = ({
   setSearch
 }) => {
 
+  const router = useRouter();
+  const { redirect }:any = router.query;
+  
   const [todayDate] = useState(Date.now());
+  const { data: session } = useSession();
+
   return (
     <header
       className='flex-1 flex xl:mx-40 lg:mx-30 md:mx-20 flex-wrap md:flex-wrap space-y-4 min-w-[150px] space-x-2 sm:justify-between justify-center items-center py-8'
@@ -170,25 +179,28 @@ const Header: React.FC<HeaderProps> = ({
         <button>
           <CalendarIcon color="gray" className='hover:text-[#5524d9] h-[30px] w-[30px] transition-all' />
         </button>
-        {/* {signed && (
-          <button onClick={singoutGoogle}>
+        {session && (
+          <button 
+            onClick={() => 
+              signOut()
+            }>
             <LogoutOutline 
               size={30} 
               color="gray" 
               className='hover:text-[#5524d9] transition-all' 
             />
           </button>
-        )} */}
+        )}
       </div>
       
       <div className='lg:flex hidden cursor-pointer lg:visible justify-between space-x-2 items-center pl-4 border-l-2 border-l-gray-300'>
-        {/* {signed ? (
+        {session ? (
           <Fragment>
             <p className='font-semibold text-md text-[#909090] hover:text-[#5524d9]'>
-              { loggedUser?.displayName }
+              { session?.user.name }
             </p>
             <Image 
-              src={{ src: user?.photoURL , width: 40, height: 40 }}
+              src={{ src: `/${session?.user.image}` , width: 40, height: 40 }}
               alt="image"
               className="rounded-full w-[25%] h-[100%]" 
             />
@@ -196,13 +208,13 @@ const Header: React.FC<HeaderProps> = ({
         ) : (
           <button 
             className='bg-violet-700 text-white font-medim text-md text-center px-4 py-2 rounded-3xl'
-            onClick={
-              loginGoogle
+            onClick={ () =>
+              router.push(`/login?redirect=${redirect || '/'}`)
             }
           >
             Signin
           </button>
-        )} */}
+        )}
       </div>
 
     </header>

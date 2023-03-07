@@ -31,21 +31,42 @@ const FiltersTop: React.FC<FilterTopProps> = ({ setFilter, filter, categories })
   const activeRef: any = useRef();
 
   const handleActiveFilter = (title: string) => {
+    let disableAllActive;
+
+    active.map((i, idx) => { 
+      disableAllActive = document.getElementById(
+        'filter'+idx
+      )
+      disableAllActive.style.backgroundColor = 'transparent'
+      disableAllActive.style.color = ''
+    })
+    
     //ACHAR O INDEX RESPONSÁVEL POR ALTERAR O ESTADO DE FILTRO ATIVO  
     let activeFilterIndex = 
       active.findIndex((i: any) => (
         title === i.title 
       ));
+
+    var filterActive = document.getElementById(
+      'filter'+activeFilterIndex
+    );
+
+    if(filterActive) {
+      filterActive.style.backgroundColor = '#14d4f1'
+      filterActive.style.color = '#5524d9'
+    }
+
     //SETA A PARTIR DO INDEX O FILTRO ATIVO
     active.filter((item: any, idx: number) => 
       idx === activeFilterIndex 
-        ? item["active"] = true
+        ? item["active"] = true 
         : item["active"] = false
     );
+
+    return active;
   }
 
   function scrollLft() {
-    console.log("left");
     const distance = 300;
     const outsider:any = document.getElementsByClassName('horizontal-scroll');
 
@@ -56,7 +77,6 @@ const FiltersTop: React.FC<FilterTopProps> = ({ setFilter, filter, categories })
   }
   
   function scrollRight() {
-    console.log("right");
     const distance = 300;
     const outsider:any = document.getElementsByClassName('horizontal-scroll');
 
@@ -91,27 +111,22 @@ const FiltersTop: React.FC<FilterTopProps> = ({ setFilter, filter, categories })
               overflowX: 'hidden' 
             }}
           >
-            {active && active?.map(({ 
+            {active?.map(({ 
               title, 
               active 
             }: any, idx: number) => (
               <motion.button
+                id={`filter${idx}`}
                 key={idx}
                 variants={item}
-                style={{ 
-                  backgroundColor: active ? '#14d4f1' : '' 
-                }}
+                // style={{ 
+                //   backgroundColor: active ? '#14d4f1' : '#000' 
+                // }}
                 className={`my-8 mx-2 h-[50px] text-[#121212] dark:text-[#F9F9F9] bg-[#F8F9FC] min-w-[250px] w-[300px] dark:bg-[#606060] hover:bg-[#14d4f1] dark:hover:bg-[#14d4f1] hover:text-[#5524d9] dark:hover:text-[#5524d9] cursor-pointer`}
-                onClick={() =>
-                  title === 'Todos' 
-                  ? (
-                    setFilter("All"), 
-                    handleActiveFilter(title) 
-                  ) : ( 
-                    setFilter(title),
-                    handleActiveFilter(title)
-                  )
-                }
+                onClick={() => {
+                  setFilter(title),
+                  handleActiveFilter(title)
+                }}
               >
                 <h3 className="font-bold text-sm text-center">
                   { title }

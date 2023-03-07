@@ -10,7 +10,10 @@ import { ToastContainer } from 'react-toastify'
 
 import '../styles/globals.css'
 import '../styles/input.css'
+
+import 'react-loading-skeleton/dist/skeleton.css'
 import 'react-toastify/dist/ReactToastify.css'
+
 import { HelmetProvider } from 'react-helmet-async'
 
 function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {

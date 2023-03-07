@@ -29,7 +29,7 @@ const loginScreen = () => {
   
   const handleSignIn = async ({ email, password }) => {
     try {
-      console.log(email,password,'credentials');
+      // console.log(email,password,'credentials');
 
       const result = await signIn('credentials', {
         redirect: false,

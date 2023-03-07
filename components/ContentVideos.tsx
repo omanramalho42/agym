@@ -14,8 +14,6 @@ const ContentVideos: React.FC<VideosProps> = ({ videos, filter = "", search = ""
   const [myVideos, setMyVideos] = useState<any>([{}]);
   useEffect(() => {
     setMyVideos(videos);
-
-    console.log('videos', { videos });
   },[videos])
 
   const container = {
