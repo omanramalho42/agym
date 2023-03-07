@@ -514,7 +514,7 @@ const Video:NextPage = () => {
 
           <div className='flex flex-wrap row justify-between space-x-2 dark:text-white'>       
             <WidgetChannelInfo 
-              channelName={videoInfo?.channelTitle || ""} 
+              channelName={"channel name"} 
               subscribers={80}
             />
             <WidgetActionFilters />
