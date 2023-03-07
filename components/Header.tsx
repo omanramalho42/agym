@@ -183,7 +183,9 @@ const Header: React.FC<HeaderProps> = ({
           <button 
             onClick={() => 
               signOut()
-            }>
+            }
+            className='cursor-pointer z-10'
+          >
             <LogoutOutline 
               size={30} 
               color="gray" 

@@ -8,7 +8,19 @@ async function handler (req, res) {
     return;
   }
 
-  const { name, email, password } = req.body;
+  const { 
+    name, 
+    email, 
+    password,
+    age,
+    pain,
+    live,
+    bed,
+    independent,
+    activity,
+    support,
+    regularly 
+  } = req.body;
   if(
     !name ||
     !email ||
@@ -39,6 +51,14 @@ async function handler (req, res) {
     email,
     password: bcryptjs.hashSync(password),
     isAdmin: false,
+    age: age,
+    pain: pain,
+    live: live,
+    bed: bed,
+    independent: independent,
+    activity: activity,
+    support: support,
+    regularly: regularly
   });
 
   const user = await newUser.save();
@@ -49,7 +69,15 @@ async function handler (req, res) {
     _id: user._id,
     name: user.name,
     email: user.email,
-    isAdmin: user.isAdmin
+    isAdmin: user.isAdmin,
+    age: user.age,
+    pain: user.pain,
+    live: user.live,
+    bed: user.bed,
+    independent: user.independent,
+    activity: user.activity,
+    support: user.support,
+    regularly: user.regularly
   });
 }
 

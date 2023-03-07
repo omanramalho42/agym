@@ -6,6 +6,14 @@ const userSchema  = new mongoose.Schema(
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     isAdmin: { type: Boolean, required: true, default: false },
+    age: { type: String, required: true },
+    pain: { type: Boolean, required: true, default: false },
+    live: { type: Boolean, required: true, default: false },
+    bed: { type: Boolean, required: true, default: false },
+    independent: { type: Boolean, required: true, default: false },
+    activity: { type: Boolean, required: true, default: false },
+    support: { type: Boolean, required: true, default: false }, 
+    regularly: { type: String, required: true }
   }, { timestamps: true }
 );
 

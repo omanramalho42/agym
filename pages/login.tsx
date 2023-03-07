@@ -51,20 +51,20 @@ const loginScreen = () => {
         <div className="m-0 bg-white shadow-lg sm:rounded-lg flex justify-center flex-1" style={{ marginTop: '0px' }}>
           <div className="lg:w-1/2 xl:w-5/12 p-6 sm:p-8">
             <div>
-              {/* <Image 
-                src={"https://www.github.com/omanramalho42.png"} 
+              <Image 
+                src={"/images/logo.png"} 
                 width={200}
                 height={200}
                 alt="logo"
                 className="w-32 mx-auto" 
-              /> */}
+              />
             </div>
             <div className="mt-10 flex flex-col items-center">
               <h1 className="text-2xl xl:text-3xl font-extrabold">
                 Registre-se na Agym Care
               </h1>
               <div className="w-full flex-1 mt-6">
-                <div className="flex flex-col items-center">
+                {/* <div className="flex flex-col items-center">
                   <button 
                     className="w-full max-w-xs font-bold shadow-sm rounded-lg py-3 bg-indigo-100 text-gray-800 flex items-center justify-center transition-all duration-300 ease-in-out focus:outline-none hover:shadow focus:shadow-sm focus:shadow-outline"
                   >
@@ -91,7 +91,7 @@ const loginScreen = () => {
                       Login com GitHub
                     </span>
                   </button>
-                </div>
+                </div> */}
 
                 <div className="my-8 border-b text-center">
                   <div className="leading-none px-2 inline-block text-sm text-gray-600 tracking-wide font-medium bg-white transform translate-y-1/2">
