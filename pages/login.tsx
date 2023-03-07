@@ -46,7 +46,7 @@ const loginScreen = () => {
   }
 
   return (
-    <div className='w-full h-full bg-transparent'>
+    <div className='w-full h-full bg-transparent border-2 border-[transparent]'>
       <div className='shadow-lg sm:mx-40 mx-20 sm:my-10 my-5 relative top-[1%]'>
         <div className="m-0 bg-white shadow-lg sm:rounded-lg flex justify-center flex-1" style={{ marginTop: '0px' }}>
           <div className="lg:w-1/2 xl:w-5/12 p-6 sm:p-8">
