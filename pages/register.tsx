@@ -38,21 +38,29 @@ const register = () => {
     independent,
     activity,
     support,
-    regularly 
+    objectives,
+    restrictions,
+    genrer,
+    height,
+    weight
   }) => {
     try {
       await axios.post('/api/auth/signup', {
         name,
         email,
         password,
-        age,
+        // age,
         pain,
         live,
         bed,
         independent,
         activity,
         support,
-        regularly
+        objectives,
+        restrictions,
+        genrer,
+        height,
+        weight
       });
 
       const result = await signIn('credentials', {
@@ -68,18 +76,19 @@ const register = () => {
       }
 
     } catch (error: any) {
+      console.log(error,'errou');
       toast.error(getError(error))
     }
   }
 
   return (
-    <section className="bg-gray-50 h-full w-full dark:bg-gray-900">
+    <section className="bg-gray-50 h-[100vh] w-full dark:bg-gray-900 border-2">
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
         <Link href="/" className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
           <img className="w-32" src="/images/logo.png" alt="logo" />
         </Link>
         <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-4xl xl:p-0 dark:bg-gray-800 dark:border-gray-700">
-          <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
+          <div className="p-6 space-y-4 md:space-y-8 sm:p-8">
             <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
               Create and account
             </h1>
@@ -226,29 +235,96 @@ const register = () => {
                   <div className="text-red-500">{errors.age.message}</div>
                 )}
               </div>
-              
+
+              {/* WEIGHT */}
+              <div className=''>
+                <label 
+                  htmlFor="weight" 
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                  Your weight
+                </label>
+                <input 
+                  type="text" 
+                  name="weight" 
+                  id="weight" 
+                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="60.5" 
+                  required
+                  {...register('weight', {
+                    required: 'Please enter your weight',
+                    valueAsNumber: true
+                  })}
+                />
+                {errors.weight && (
+                  //@ts-ignore
+                  <div className="text-red-500">{errors.weight.message}</div>
+                )}
+              </div>
+
+              {/* HEIGHT */}
+              <div className=''>
+                <label 
+                  htmlFor="height" 
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                  Your height
+                </label>
+                <input 
+                  type="text" 
+                  name="height" 
+                  id="height" 
+                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="1.75" 
+                  required
+                  {...register('height', {
+                    required: 'Please enter your height',
+                    valueAsNumber: true
+                  })}
+                />
+                {errors.height && (
+                  //@ts-ignore
+                  <div className="text-red-500">{errors.height.message}</div>
+                )}
+              </div>
+
+              {/* ADDITIONAL INFO */}
               <div className='w-full flex'>
-                {/* PAIN */}
-                <div className='flex-1 flex row items-center justify-between'>
+                {/* genrer */}
+                <div className='flex-1 row items-center justify-between'>
                   <label 
-                    htmlFor="pain" 
-                    className="block w-full mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                    htmlFor="genrer" 
+                    className="flex w-full mb-2 text-sm font-medium text-gray-900 dark:text-white"
                   >
-                    Sente dores crônicas?
+                    Genêro que se indentifica?
                   </label>
-                  <input 
-                    type="checkbox" 
-                    name="pain" 
-                    id="pain" 
+                  <select  
+                    name="genrer" 
+                    id="genrer" 
                     className="bg-gray-50 border relative bottom-1 border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    {...register('pain')}
-                  />
-                  {errors.age && (
+                    {...register('genrer')}
+                  >
+                    <option value="men">
+                      Homem
+                    </option>
+                    <option value="women">
+                      Mulher
+                    </option>
+                    <option value="other">
+                      Outro
+                    </option>
+                    <option value="none">
+                      Prefiro nao identificar
+                    </option>
+                  </select>
+                  {errors.genrer && (
                     //@ts-ignore
-                    <div className="text-red-500">{errors.pain.message}</div>
+                    <div className="text-red-500">{errors.genrer.message}</div>
                   )}
                 </div>
+              </div>
 
+              <div className="w-full flex">
                 {/* LIVE ALONE */}
                 <div className='flex-1 flex row items-center justify-between'>
                   <label 
@@ -262,36 +338,11 @@ const register = () => {
                     name="live" 
                     id="live" 
                     className="bg-gray-50 border relative bottom-1 border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-
                     {...register('live')}
                   />
                   {errors.live && (
                     //@ts-ignore
                     <div className="text-red-500">{errors.live.message}</div>
-                  )}
-                </div>
-              </div>
-
-              <div className="w-full flex">
-                {/* BED */}
-                <div className='flex-1 flex row items-center justify-between'>
-                  <label 
-                    htmlFor="bed" 
-                    className="flex w-full mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                  >
-                    É acamado?
-                  </label>
-                  <input 
-                    type="checkbox" 
-                    name="bed" 
-                    id="bed" 
-                    className="bg-gray-50 border relative bottom-1 border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-
-                    {...register('bed')}
-                  />
-                  {errors.bed && (
-                    //@ts-ignore
-                    <div className="text-red-500">{errors.bed.message}</div>
                   )}
                 </div>
 
@@ -317,29 +368,9 @@ const register = () => {
                   )}
                 </div>
               </div>
-
+              
+              {/* HEALTH INFO */}
               <div className='w-full flex'>
-                {/* Medical Support */}
-                <div className='flex-1 flex row items-center justify-between'>
-                  <label 
-                    htmlFor="support" 
-                    className="flex w-full mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                  >
-                    Precisa de acompanhamento médico?
-                  </label>
-                  <input 
-                    type="checkbox" 
-                    name="support" 
-                    id="support" 
-                    className="bg-gray-50 border relative bottom-1 border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    {...register('support')}
-                  />
-                  {errors.support && (
-                    //@ts-ignore
-                    <div className="text-red-500">{errors.support.message}</div>
-                  )}
-                </div>
-
                 {/* INDEPENDENT */}
                 <div className='flex-1 flex row items-center justify-between'>
                   <label 
@@ -360,38 +391,139 @@ const register = () => {
                     <div className="text-red-500">{errors.independent.message}</div>
                   )}
                 </div>
+
+                {/* BED */}
+                <div className='flex-1 flex row items-center justify-between'>
+                  <label 
+                    htmlFor="bed" 
+                    className="flex w-full mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >
+                    É acamado?
+                  </label>
+                  <input 
+                    type="checkbox" 
+                    name="bed" 
+                    id="bed" 
+                    className="bg-gray-50 border relative bottom-1 border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+
+                    {...register('bed')}
+                  />
+                  {errors.bed && (
+                    //@ts-ignore
+                    <div className="text-red-500">{errors.bed.message}</div>
+                  )}
+                </div>
               </div>
 
-              {/* QUANTAS VEZES NA SEMANA */}
+
+              <div className='w-full flex'>
+                {/* PAIN */}
+                <div className='flex-1 flex row items-center justify-between'>
+                  <label 
+                    htmlFor="pain" 
+                    className="block w-full mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >
+                    Sente dores crônicas?
+                  </label>
+                  <input 
+                    type="checkbox" 
+                    name="pain" 
+                    id="pain" 
+                    className="bg-gray-50 border relative bottom-1 border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    {...register('pain')}
+                  />
+                  {errors.age && (
+                    //@ts-ignore
+                    <div className="text-red-500">{errors.pain.message}</div>
+                  )}
+                </div>
+                
+                {/* Medical Restrictions */}
+                <div className='flex-1 flex row items-center justify-between'>
+                  <label 
+                    htmlFor="restrictions" 
+                    className="flex w-full mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >
+                    Possui restriçoes médicas?
+                  </label>
+                  <input 
+                    type="checkbox" 
+                    name="restrictions" 
+                    id="restrictions" 
+                    className="bg-gray-50 border relative bottom-1 border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    {...register('restrictions')}
+                  />
+                  {errors.restrictions && (
+                    //@ts-ignore
+                    <div className="text-red-500">{errors.restrictions.message}</div>
+                  )}
+                </div>
+              </div>
+
+              <div className='flex-1 flex row items-center justify-between'>
+                {/* Medical Support */}
+                <div className='flex w-[50%] row items-center justify-between'>
+                  <label 
+                    htmlFor="support" 
+                    className="flex w-full mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >
+                    Precisa de acompanhamento médico?
+                  </label>
+                  <input 
+                    type="checkbox" 
+                    name="support" 
+                    id="support" 
+                    className="bg-gray-50 border relative bottom-1 border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    {...register('support')}
+                  />
+                  {errors.support && (
+                    //@ts-ignore
+                    <div className="text-red-500">{errors.support.message}</div>
+                  )}
+                </div>
+
+              </div>
+            
+              {/* objectives */}
               <div className='flex row items-center justify-between'>
                 <label 
-                  htmlFor="regularly" 
+                  htmlFor="objectives" 
                   className="flex w-full mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
-                  Quantas vezes na semana?
+                  Seus objetivos (selecionar)
                 </label>
                 <select  
-                  name="regularly" 
-                  id="regularly" 
+                  name="objectives" 
+                  id="objectives" 
                   className="bg-gray-50 border relative bottom-1 border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  {...register('regularly')}
+                  {...register('objectives')}
                 >
-                  <option value="1">
-                    1 vez na semana
+                  <option value="mobilidade">
+                    Mobilidade
                   </option>
-                  <option value="2-3">
-                    2 a 3 vezez na semana
+                  <option value="equilibrio">
+                    Equilibrio
                   </option>
-                  <option value="3-4">
-                    3 a 4 vezez na semana
+                  <option value="Força">
+                    Força
                   </option>
-                  <option value="5">
-                    5 vezes na semana
+                  <option value="Postura">
+                    Postura
                   </option>
+                  <option value="Cardiorrespiratório">
+                    Cardiorrespiratório
+                  </option>
+                  <option value="Alongamento">
+                    Alongamento
+                  </option>
+                  <option value="Alívio de dor">
+                    Alívio de dor
+                  </option>
+                  
                 </select>
-                {errors.regularly && (
+                {errors.objectives && (
                   //@ts-ignore
-                  <div className="text-red-500">{errors.regularly.message}</div>
+                  <div className="text-red-500">{errors.objectives.message}</div>
                 )}
               </div>
 

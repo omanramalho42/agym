@@ -19,15 +19,25 @@ async function handler (req, res) {
     independent,
     activity,
     support,
-    regularly 
+    regularly,
+    objectives,
+    restrictions,
+    genrer,
+    height,
+    weight
   } = req.body;
   if(
     !name ||
     !email ||
     !email.includes('@') ||
     !password ||
-    password.trim().length < 5 ||
-    !age || age.trim().length < 2
+    password.trim().length < 5 
+    // ||
+    // !age || 
+    // age.trim().length < 2 ||
+    // !genrer || 
+    // !height || 
+    // !weight
   ) {
     res.status(422).json({
       message: 'Validation error'
@@ -52,14 +62,19 @@ async function handler (req, res) {
     email,
     password: bcryptjs.hashSync(password),
     isAdmin: false,
-    age: age,
-    pain: pain,
-    live: live,
-    bed: bed,
-    independent: independent,
-    activity: activity,
-    support: support,
-    regularly: regularly
+    age,
+    pain,
+    live,
+    bed,
+    independent,
+    activity,
+    support,
+    regularly,
+    objectives,
+    restrictions,
+    genrer,
+    height,
+    weight
   });
 
   const user = await newUser.save();
@@ -78,7 +93,12 @@ async function handler (req, res) {
     independent: user.independent,
     activity: user.activity,
     support: user.support,
-    regularly: user.regularly
+    regularly: user.regularly,
+    objectives: user.objectives,
+    restrictions: user.restrictions,
+    genrer: user.genrer,
+    height: user.height,
+    weight: user.weight
   });
 }
 

@@ -14,7 +14,11 @@ export const data = {
       independent: false,
       activity: false,
       support: false,
-      regularly: "1"
+      objectives: "",
+      restrictions: false,
+      genrer: 'men',
+      height: '1.71',
+      weight: '62.30'
     },
     {
       name: 'Thiago',
@@ -28,7 +32,11 @@ export const data = {
       independent: false,
       activity: false,
       support: false,
-      regularly: "2-3"
+      objectives: "",
+      restrictions: false,
+      genrer: 'men',
+      height: '1.71',
+      weight: '62.30'
     },
     {
       name: 'Kaneson',
@@ -42,7 +50,11 @@ export const data = {
       independent: false,
       activity: false,
       support: false,
-      regularly: "2-3"
+      objectives: "",
+      restrictions: false,
+      genrer: 'men',
+      height: '1.71',
+      weight: '62.30'
     },
   ]
 }

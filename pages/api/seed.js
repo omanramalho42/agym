@@ -5,7 +5,7 @@ import db from '../../utils/db'
 const handler = async (req, res) => {
   await db.connect();
   await User.deleteMany();
-  
+  // await User.updateMany(data.users);
   await User.insertMany(data.users);
   await db.disconnect();
 

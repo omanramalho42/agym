@@ -12,8 +12,12 @@ const userSchema  = new mongoose.Schema(
     bed: { type: Boolean, required: true, default: false },
     independent: { type: Boolean, required: true, default: false },
     activity: { type: Boolean, required: true, default: false },
-    support: { type: Boolean, required: true, default: false }, 
-    regularly: { type: String, required: true }
+    support: { type: Boolean, required: true, default: false },
+    objectives: { type: String, required: true },
+    restrictions: { type: Boolean, required: true, default: false },
+    genrer: { type: String, required: true },
+    height: { type: String, required: true },
+    weight: { type: String, required: true }
   }, { timestamps: true }
 );
 
