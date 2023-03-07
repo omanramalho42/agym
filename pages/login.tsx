@@ -46,10 +46,10 @@ const loginScreen = () => {
   }
 
   return (
-    <div className='w-full h-full bg-transparent border-2 border-[transparent]'>
-      <div className='shadow-lg sm:mx-40 mx-20 sm:my-10 my-5 relative top-[1%]'>
-        <div className="m-0 bg-white shadow-lg sm:rounded-lg flex justify-center flex-1" style={{ marginTop: '0px' }}>
-          <div className="lg:w-1/2 xl:w-5/12 p-6 sm:p-8">
+    <div className='flex justify-center w-full h-full bg-transparent border-2 border-[transparent]'>
+      <div className='shadow-lg sm:mx-40 mx-20 sm:my-10 '>
+        <div className="m-0 bg-white h-full xl:w-[1000px] shadow-lg sm:rounded-lg flex justify-center flex-1" style={{ marginTop: '0px' }}>
+          <div className="lg:w-1/2 xl:w-6/12 p-6 sm:p-8">
             <div>
               <Image 
                 src={"/images/logo.png"} 
@@ -156,7 +156,8 @@ const loginScreen = () => {
                     </div>
                   </div>
 
-                  <div 
+                  <Link 
+                    href={`/register?redirect=${redirect || '/'}`}
                     className="mt-4 tracking-wide font-semibold bg-indigo-500 text-gray-100 w-full py-4 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
                   >
                     <svg className="w-6 h-6 -ml-2" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -165,13 +166,11 @@ const loginScreen = () => {
                       <path d="M20 8v6M23 11h-6" />
                     </svg>
                     <span className="ml-3">
-                      <Link href={`/register?redirect=${redirect || '/'}`}>
-                        <p>
-                          Sign Up
-                        </p>
-                      </Link>
+                      <p>
+                        Sign Up
+                      </p>
                     </span>
-                  </div>
+                  </Link>
                   <p className="mt-4 text-xs text-gray-600 text-center">
                     Eu concordo com agym a cerca dos
                     <Link href="#" className="ml-1 border-b border-gray-500 border-dotted">
