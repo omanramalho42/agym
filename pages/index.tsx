@@ -18,10 +18,6 @@ import { setCategories, useCategories } from '../redux/slicer/CategoriesSlicer'
 
 import { setVideos, useVideos } from '../redux/slicer/VideosSlicer'
 
-import Head from 'next/head'
-
-import { Helmet } from 'react-helmet'
-
 import { useRouter } from 'next/router'
 
 // export const getStaticProps: GetStaticProps = async () => {
@@ -89,12 +85,6 @@ export default function Home(props, context) {
       desc='Página inicial Homepage'
     >
       <div>
-      <Head>
-        <Helmet>
-          <title>Agym Care</title>
-        </Helmet>
-      </Head>
-      
       {session && (
         <div className='flex-1 p-2 bg-[#5524d9]'>
           <p className='flex flex-wrap justify-center text-xl font-semibold text-white text-center p-2 space-x-2'>

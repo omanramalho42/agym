@@ -36,6 +36,10 @@ const Video = ({
     }
   },[videoId]);
 
+  useEffect(() => {
+    console.log(useLoading,'loading');
+  },[useLoading]);
+
   const router = useRouter();
 
   // if(useLoading) {

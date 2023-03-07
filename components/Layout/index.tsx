@@ -1,5 +1,8 @@
-import Head from 'next/head';
 import React from 'react'
+
+import Head from 'next/head'
+
+import { Helmet } from 'react-helmet'
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -11,10 +14,12 @@ const Layout = ({ children, title, desc }: LayoutProps) => {
   return (
     <div>
       <Head>
-        <title>{ title }</title>
-        <meta name="description" content={desc} />
+        <Helmet>
+          <title>{ title }</title>
+          <meta name="description" content={desc} />
+        </Helmet>
       </Head>
-
+      
       <>
         { children }
       </>
