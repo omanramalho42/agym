@@ -14,6 +14,8 @@ import { LockClosedIcon }  from '@heroicons/react/24/outline'
 
 import { toast } from 'react-toastify'
 
+import walpapper from '../public/images/walpapper.png'
+
 const loginScreen = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const { data: session } = useSession();
@@ -48,7 +50,7 @@ const loginScreen = () => {
   return (
     <div className='flex justify-center w-full h-full bg-transparent border-2 border-[transparent]'>
       <div className='shadow-lg sm:mx-40 mx-20 sm:my-10 '>
-        <div className="m-0 bg-white h-full xl:w-[1000px] shadow-lg sm:rounded-lg flex justify-center flex-1" style={{ marginTop: '0px' }}>
+        <div className="m-0 bg-white h-full xl:w-[1200px] shadow-lg sm:rounded-lg flex justify-center flex-1" style={{ marginTop: '0px' }}>
           <div className="lg:w-1/2 xl:w-6/12 p-6 sm:p-8">
             <div>
               <Image 
@@ -61,7 +63,7 @@ const loginScreen = () => {
             </div>
             <div className="mt-10 flex flex-col items-center">
               <h1 className="text-2xl xl:text-3xl font-extrabold">
-                Registre-se na Agym Care
+               Login Agym Care
               </h1>
               <div className="w-full flex-1 mt-6">
                 {/* <div className="flex flex-col items-center">
@@ -186,9 +188,10 @@ const loginScreen = () => {
             </div>
           </div>
           <div className="flex-1 bg-indigo-100 text-center hidden lg:flex">
-            <div 
-              className="m-12 xl:m-16 w-full bg-contain bg-center bg-no-repeat"
-              style={{ backgroundImage: `url('https://storage.googleapis.com/devitary-image-host.appspot.com/15848031292911696601-undraw_designer_life_w96d.svg')` }}
+            <Image
+              className="m-12 xl:m-16 w-full object-contain bg-contain bg-center bg-no-repeat"
+              src={walpapper}
+              alt="banner"
             />
           </div>
         </div>
