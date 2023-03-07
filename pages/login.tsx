@@ -46,7 +46,7 @@ const loginScreen = () => {
   }
 
   return (
-    <div className='w-full h-full bg-transparent' style={{ overflowY: 'hidden' }}>
+    <div className='w-full h-full bg-transparent'>
       <div className='shadow-lg sm:mx-40 mx-20 sm:my-10 my-5 relative top-[1%]'>
         <div className="m-0 bg-white shadow-lg sm:rounded-lg flex justify-center flex-1" style={{ marginTop: '0px' }}>
           <div className="lg:w-1/2 xl:w-5/12 p-6 sm:p-8">
@@ -110,7 +110,7 @@ const loginScreen = () => {
                     id='email'
                     autoComplete='email' 
                     required
-                    autoFocus
+                    autoFocus={false}
                     {...register('email', {
                       required: 'Please enter email',
                       pattern: {
@@ -156,7 +156,7 @@ const loginScreen = () => {
                     </div>
                   </div>
 
-                  <button 
+                  <div 
                     className="mt-4 tracking-wide font-semibold bg-indigo-500 text-gray-100 w-full py-4 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
                   >
                     <svg className="w-6 h-6 -ml-2" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -171,7 +171,7 @@ const loginScreen = () => {
                         </p>
                       </Link>
                     </span>
-                  </button>
+                  </div>
                   <p className="mt-4 text-xs text-gray-600 text-center">
                     Eu concordo com agym a cerca dos
                     <Link href="#" className="ml-1 border-b border-gray-500 border-dotted">
